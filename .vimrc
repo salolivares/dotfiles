@@ -1,24 +1,30 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim' 
-Plugin 'mbbill/undotree'
-Plugin 'kien/ctrlp.vim'
+
+" Enhancements
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'godlygeek/tabular'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+
+" Color Schemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/vim-distinguished'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'scrooloose/nerdtree'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'altercation/vim-colors-solarized'
+
+" Syntax Highlight
+Plugin 'derekwyatt/vim-scala'
 Plugin 'Harenome/vim-mipssyntax'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 call vundle#end()  
 
@@ -100,8 +106,11 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" show line numbers
 set number
 
+" highlight current line
+set cursorline          
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -115,11 +124,19 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     set guioptions+=e
+
+	" Disable scrollbars (real hackers don't use scrollbars for navigation!)
+	set guioptions-=r
+	set guioptions-=R
+	set guioptions-=l
+	set guioptions-=L
+
     set t_Co=256
     set guitablabel=%M\ %t
     colorscheme base16-default
 else
     colorscheme distinguished
+    set t_Co=256
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -199,6 +216,18 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -227,11 +256,14 @@ set viminfo^=%
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Quickly open a buffer for scripbble
+" Quickly open a buffer for a scribble
 map <leader>b :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+set laststatus=2
+set mouse=niv
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -293,11 +325,9 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" custom binding
-set laststatus=2
-set mouse=niv
-
-" neocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neocomplete Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -365,23 +395,20 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tabular
+""""""""""""""""""""""""""""""""""""""""""""""""
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
-" nerdtree settings
+"""""""""""""""""""""""""""""""""""
+" => Nerdtree Settings
+"""""""""""""""""""""""""""""""""""
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 map <C-n> :NERDTreeToggle<CR>
-
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
