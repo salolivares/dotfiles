@@ -20,6 +20,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " Color Schemes 
 Plugin 'chriskempson/base16-vim'
@@ -189,7 +191,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -461,3 +462,14 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
+"""""""""""""""""""""""""""""""""""""
+" => Syntastic Settings
+ """""""""""""""""""""""""""""""""""""
+ set statusline+=%#warningmsg#
+ set statusline+=%{SyntasticStatuslineFlag()}
+ set statusline+=%*
+
+ let g:syntastic_always_populate_loc_list = 1
+ let g:syntastic_auto_loc_list = 1
+ let g:syntastic_check_on_open = 1
+ let g:syntastic_check_on_wq = 0
