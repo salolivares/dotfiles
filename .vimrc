@@ -120,9 +120,6 @@ set number
 " highlight current line
 set cursorline          
 
-" set relative numbers depending on context
-set relativenumber
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
