@@ -6,3 +6,4 @@ My configuration for vim and zsh!
 - [Vundle](https://github.com/VundleVim/Vundle.vim)
 - [Bat](https://github.com/sharkdp/bat)
 - [ack](https://beyondgrep.com/)
+- [autojump] (https://github.com/wting/autojump)
