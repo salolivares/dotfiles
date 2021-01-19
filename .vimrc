@@ -277,7 +277,7 @@ map <leader>pp :setlocal paste!<cr>
 
 set laststatus=2
 set mouse=niv
-set clipboard+=unnamed
+set clipboard=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
