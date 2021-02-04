@@ -9,5 +9,5 @@ My configuration for vim and zsh!
 - [autojump](https://github.com/wting/autojump)
 
 ## i3
-- [i3]
-- [i3blocks] (https://github.com/vivien/i3blocks)
+- i3
+- [i3blocks](https://github.com/vivien/i3blocks)
