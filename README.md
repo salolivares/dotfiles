@@ -1,5 +1,5 @@
 # dotfiles
-My configuration for vim and zsh!
+My configuration for vim, zsh, and other things!
 
 ## Prerequisites
 - [Base16-shell](https://github.com/chriskempson/base16-shell)
