@@ -7,3 +7,7 @@ My configuration for vim and zsh!
 - [Bat](https://github.com/sharkdp/bat)
 - [ack](https://beyondgrep.com/)
 - [autojump](https://github.com/wting/autojump)
+
+## i3
+- [i3]
+- [i3blocks] (https://github.com/vivien/i3blocks)
